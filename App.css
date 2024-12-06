@@ -1,0 +1,145 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+body {
+  height: 100vh;
+  background: linear-gradient(120deg, #141e30, #243b55, #1d2d50, #283e51);
+  background-size: 400% 400%;
+  animation: gradientBackground 8s ease infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Arial', sans-serif;
+  color: white;
+}
+
+
+@keyframes gradientBackground {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  animation: fadeInUp 1s ease;
+}
+
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+
+.score-board {
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  font-size: 1.5rem;
+  color: white;
+  background: linear-gradient(45deg, #ff8c00, #ff3f81, #651fff);
+  box-shadow: 0 0 15px rgba(255, 0, 128, 0.7);
+  border-radius: 50px;
+  animation: scoreboardGlow 2s infinite alternate;
+}
+
+
+@keyframes scoreboardGlow {
+  0% { box-shadow: 0 0 15px rgba(255, 0, 128, 0.7); }
+  100% { box-shadow: 0 0 30px rgba(255, 0, 128, 1); }
+}
+
+
+.grid {
+  display: grid;
+  grid-template-rows: repeat(20, 25px);
+  grid-template-columns: repeat(20, 25px);
+  gap: 2px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+}
+
+
+.cell {
+  width: 25px;
+  height: 25px;
+  background: linear-gradient(135deg, #444, #666);
+  border-radius: 5px;
+  transition: all 0.2s ease;
+}
+
+
+.cell.snake {
+  background: linear-gradient(135deg, #34ebba, #00d4ff);
+  box-shadow: 0 0 10px rgba(52, 235, 186, 0.9), 0 0 20px rgba(0, 212, 255, 0.8);
+  animation: snakePulse 0.6s infinite alternate;
+}
+
+
+@keyframes snakePulse {
+  0% { box-shadow: 0 0 10px rgba(52, 235, 186, 0.8); }
+  100% { box-shadow: 0 0 20px rgba(0, 212, 255, 1); }
+}
+
+
+.cell.food {
+  background: radial-gradient(circle, #ff6f61, #ff3d00);
+  box-shadow: 0 0 15px rgba(255, 111, 97, 0.8), 0 0 25px rgba(255, 61, 0, 1);
+  animation: foodGlow 1.2s infinite alternate;
+}
+
+
+@keyframes foodGlow {
+  0% { box-shadow: 0 0 15px rgba(255, 111, 97, 0.8); }
+  100% { box-shadow: 0 0 25px rgba(255, 61, 0, 1); }
+}
+
+
+.game-over {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 30px 50px;
+  border-radius: 15px;
+  box-shadow: 0 0 30px rgba(255, 0, 128, 0.5);
+  animation: gameOverFadeIn 1s ease;
+}
+
+
+@keyframes gameOverFadeIn {
+  0% { opacity: 0; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+
+.game-over button {
+  margin-top: 20px;
+  padding: 15px 30px;
+  font-size: 1rem;
+  color: white;
+  background: linear-gradient(45deg, #ff0077, #ff4500);
+  border: none;
+  border-radius: 30px;
+  box-shadow: 0 4px 15px rgba(255, 0, 119, 0.5);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.game-over button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 10px 30px rgba(255, 0, 119, 0.7);
+}
